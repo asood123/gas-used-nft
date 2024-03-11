@@ -5,9 +5,14 @@ import { forwardSearchParams } from '@/lib/utils'
 import AdvanceStepButton from '@/components/ui/AdvanceStepButton';
 import CodeBox from '@/components/ui/CodeBox';
 import { useAccount } from 'wagmi';
+import { useTxnsFromEtherscan } from './hooks/useTxnsFromEtherscan';
 
 export default function Home() {
   const { address } = useAccount();
+
+  console.log({address})
+
+  const { status, data: txnList } = useTxnsFromEtherscan(address);
 
   let compiledCircuit;
   try {
@@ -28,13 +33,15 @@ export default function Home() {
     )
   }
 
+  console.log(status, "txnList", txnList);
+
   return (
     <>
       <Title>
-        Average Balance Proof
+        Cumulative Gas Used Proof
       </Title>
       <div className="text-center">
-        Access your average ETH balance over 8 evenly spaced blocks in the last 24 hours.
+        Prove you have used a minimum amount of gas on Ethereum
       </div>
       <AdvanceStepButton
         label="Generate Proof"
