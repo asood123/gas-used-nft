@@ -48,7 +48,7 @@ export default async function Prove({ searchParams }: PageProps) {
         <BuildQuery
           inputs={inputs}
           callbackAddress={Constants.CALLBACK_CONTRACT}
-          callbackExtraData={bytes32('0x0')}
+          callbackExtraData={bytes32(connected)}
           refundee={connected}
           callbackAbi={callbackAbi}
         />

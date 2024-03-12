@@ -2,7 +2,7 @@
 
 import { useAxiomCircuit } from "@axiom-crypto/react";
 import { UserInput } from "@axiom-crypto/client";
-import jsonInputs from "../../../axiom/data/inputs.json";
+import jsonInputs from "../../../axiom/data/inputs_totalGas.json";
 import { useEffect } from "react";
 import LoadingAnimation from "../ui/LoadingAnimation";
 import SubmitQuery from "./SubmitQuery";
