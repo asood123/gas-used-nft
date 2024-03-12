@@ -1,10 +1,8 @@
-# Axiom Quickstart
+# Gas Used NFT
 
 ## Introduction
 
-This starter repo is a guide to get you started making your first [Axiom](https://axiom.xyz) query as quickly as possible using the [Axiom SDK](https://github.com/axiom-crypto/axiom-sdk-client) and [Axiom smart contract client](https://github.com/axiom-crypto/axiom-v2-periphery). To learn more about Axiom, check out the developer docs at [docs.axiom.xyz](https://docs.axiom.xyz) or join our developer [Telegram](https://t.me/axiom_discuss).
-
-A guide on how to use this repository is available in the [Axiom Docs: Quickstart](https://docs.axiom.xyz/introduction/quickstart).
+This app lets you prove how much gas you have used and earn an NFT claiming that.
 
 ## Installation
 

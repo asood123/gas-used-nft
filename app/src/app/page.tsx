@@ -54,7 +54,7 @@ export default function Home() {
 
   console.log(status, "txnList", txnList);
   console.log("blockNumber", blockNumber);
-
+/*
   const {
     build,
     builtQuery,
@@ -76,6 +76,7 @@ export default function Home() {
     setParams(inputs, Constants.CALLBACK_CONTRACT, bytes32('0x0'), address);
   }, [setParams, inputs, Constants.CALLBACK_CONTRACT, address]);
 
+  
   const onButtonClick = async () => {
     if (!areParamsSet) {
       console.log("params not set");
@@ -84,7 +85,7 @@ export default function Home() {
     console.log("building with inputs:", inputs)
     await build();
   }
-
+*/
 
   return (
     <>
@@ -100,13 +101,14 @@ export default function Home() {
         <div> Estimated provable gas on chain: {txnList.reduce((acc, txn) => acc + txn.gasUsed, 0)} </div>
         }
       </div>
-        <Button onClick={onButtonClick}>{areParamsSet ? 'Generate proof' : 'Waiting'}</Button>
+        {/* {false && <Button onClick={onButtonClick}>{areParamsSet ? 'Generate proof' : 'Waiting'}</Button>} */}
       <AdvanceStepButton
         label="Generate Proof"
         href={"/prove?" + forwardSearchParams({ 
           connected: address, 
-          txnBlockNumbers: txnList.map(txn => txn.blockNumber.toString()), 
-          txnIndexes: txnList.map(txn => txn.transactionIndex.toString())})}
+          //txnBlockNumbers: txnList.map(txn => txn.blockNumber.toString()), // not being used, as these are hardcoded in prove/page.tsx
+          // txnIndexes: txnList.map(txn => txn.transactionIndex.toString()) // not being used, as these are hardcoded in prove/page.tsx
+        })} 
       />
     </>
   )

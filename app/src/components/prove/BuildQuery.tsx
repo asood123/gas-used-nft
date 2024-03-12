@@ -33,6 +33,7 @@ export default function BuildQuery({
 
   useEffect(() => {
     const buildQuery = async () => {
+      console.log({ inputs, callbackAddress, callbackExtraData, refundee });
       if (!areParamsSet) {
         return;
       }
