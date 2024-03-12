@@ -18,6 +18,7 @@ import {
   // These should be the _variable_ inputs to your circuit. Constants can be hard-coded into the circuit itself.
   export interface CircuitInputs {
     address: CircuitValue;
+    // TODO: introduce a counter for how many values to read in blockNumber
     blockNumber: CircuitValue;
     txnBlockNumbers: CircuitValue[];
     txnIndexes: CircuitValue[];
@@ -27,9 +28,13 @@ import {
   // the circuit at proving time.
   export const defaultInputs = {
     "address": "0x4bD047CA72fa05F0B89ad08FE5Ba5ccdC07DFFBF",
-    "blockNumber": 5436656,
-    "txnBlockNumbers": [5436655, 5436534],
-    "txnIndexes": [3, 42]
+    "blockNumber": 5471888,
+    "txnBlockNumbers": [
+        5436655, 
+        5436534,
+        5397055,
+        5302049],
+    "txnIndexes": [3, 42, 50, 84]
 }
   
   // The function name `circuit` is searched for by default by our Axiom CLI; if you decide to 
@@ -41,9 +46,10 @@ import {
 
     // TODO verify that both txnBlockNumbers and txnIndexes are the same length
     // For each transaction, get the receipt and calculate gas used
-    let txnCount = inputs.txnBlockNumbers.length;
+    let txnCount = 4;
     let totalGasUsed = constant(0);
     for (let i = 0; i< txnCount; i++) {
+      // TODO handle when txnIndex is 0, can't use -1
         const blockNumber = inputs.txnBlockNumbers[i];
         const txnIndex = inputs.txnIndexes[i];
         let receipt1 = getReceipt(blockNumber, sub(txnIndex, constant(1)));

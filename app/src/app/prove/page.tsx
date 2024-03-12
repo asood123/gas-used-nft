@@ -1,7 +1,7 @@
 import BuildQuery from "@/components/prove/BuildQuery";
 import Title from "@/components/ui/Title";
 import callbackAbi from '@/lib/abi/AverageBalance.json';
-import jsonInputs from "../../../axiom/data/inputs.json";
+import jsonInputs from "../../../axiom/data/inputs_totalGas.json";
 import { bytes32 } from "@/lib/utils";
 import { publicClient } from "@/lib/viemClient";
 import { Constants } from "@/shared/constants";
@@ -25,14 +25,20 @@ export default async function Prove({ searchParams }: PageProps) {
 
   const blockNumber = await publicClient.getBlockNumber();
   const inputs: UserInput<typeof jsonInputs> = {
-    blockNumber: Number(blockNumber),
+    blockNumber: 5472003, //Number(blockNumber),
     address: connected,
+    txnBlockNumbers: [
+      5466311,
+      5436655, 
+      5436534,
+      5397055],
+    txnIndexes: [99, 3, 42, 50]
   }
 
   return (
     <>
       <Title>
-        Prove
+        Prove your gas Usage
       </Title>
       <div className="text-center">
         Please wait while your browser generates a compute proof for the Axiom Query.
@@ -41,7 +47,7 @@ export default async function Prove({ searchParams }: PageProps) {
         <BuildQuery
           inputs={inputs}
           callbackAddress={Constants.CALLBACK_CONTRACT}
-          callbackExtraData={bytes32(connected)}
+          callbackExtraData={bytes32('0x0')}
           refundee={connected}
           callbackAbi={callbackAbi}
         />
